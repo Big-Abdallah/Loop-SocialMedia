@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+@import "@heroui/styles";
+
+@theme {
+  /* === Colors === */
+  --color-bg-page: #F7F5F1;
+  --color-bg-card: #FFFFFF;
+  --color-text-primary: #18171B;   /* ink */
+  --color-text-secondary: #6E6B72; /* ink-muted */
+  --color-border: #E6E2DA;
+  --color-accent: #4A2545;         /* deep plum */
+  --color-accent-soft: #F0E6EC;
+  --color-button-bg: #4A2545;
+  --color-button-text: #FBF4F8;
+
+  /* === Typography === */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", serif;
+
+  --text-hero: 4rem;
+  --text-hero--line-height: 1.05;
+  --text-hero--font-weight: 500;
+  --text-hero--letter-spacing: -0.01em;
+
+  --text-section: 2rem;
+  --text-section--line-height: 1.15;
+  --text-section--font-weight: 500;
+  --text-section--letter-spacing: -0.01em;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-label--font-weight: 600;
+  --text-label--letter-spacing: 0.08em;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  /* === Border Radius === */
+  --radius-card: 0.625rem;   /* rounded-lg, quieter than the old rounded-3xl */
+  --radius-pill: 0.625rem;   /* buttons now match card radius, no more full pills */
+
+  /* === Borders instead of shadows === */
+  --shadow-card-rest: none;
+  --shadow-card-hover: none;
+
+  /* === Motion === */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 200ms;
+  --duration-base: 250ms;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  button{
+    cursor: pointer;
+  }
+  
+}
+
+@layer utilities {
+  /* --- Card: hairline border instead of shadow --- */
+  .card {
+    background-color: var(--color-bg-card);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    transition: border-color var(--duration-base) var(--ease-smooth);
+  }
+  .card:hover {
+    border-color: var(--color-accent);
+  }
+
+  /* --- Buttons: rounded-lg, plum, no pill --- */
+  .btn-primary {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border-radius: var(--radius-pill);
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+  }
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+
+  /* --- Chips / Tags: plum tint instead of gray tonal --- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-pill);
+    padding: 0.35rem 0.9rem;
+    font-size: var(--text-label);
+    font-weight: var(--text-label--font-weight);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+  .chip-strong {
+    background-color: var(--color-accent);
+    color: var(--color-button-text);
+  }
+
+  .icon-outline {
+    stroke: var(--color-text-primary);
+    fill: none;
+    stroke-width: 1.5px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .bento-span-2 {
+    grid-column: span 2 / span 2;
+  }
+}
+.btn-upload {
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: all 200ms;
+}
+
+.btn-upload:hover {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-upload:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
