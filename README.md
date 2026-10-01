@@ -4,6 +4,7 @@ A social media app built around connection and community, a calmer, more conside
 
 Built with **React 19**, **Vite**, **Tailwind CSS 4**, and **HeroUI**, on top of a REST API.
 
+🔗 **Live demo:** [app-note-nu.vercel.app](https://loop-social-media.vercel.app/)
 ---
 
 ## ✨ Features
